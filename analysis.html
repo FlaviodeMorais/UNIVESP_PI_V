@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Análise de Dados - Aquaponia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-fish"></i>
+                <h1>Aquaponia</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/analysis.html" class="nav-item active">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Análises</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h2>Análise de Dados</h2>
+                <div class="header-actions">
+                    <div class="date-filter">
+                        <div class="input-group">
+                            <label for="startDate">Data Inicial</label>
+                            <input type="datetime-local" id="startDate">
+                        </div>
+                        <div class="input-group">
+                            <label for="endDate">Data Final</label>
+                            <input type="datetime-local" id="endDate">
+                        </div>
+                        <button id="filter-button" class="btn-update">
+                            <i class="fas fa-filter"></i>
+                            Filtrar
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="analysis-grid">
+                <!-- Temperature Analysis -->
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h3>Histórico de Temperatura</h3>
+                        <div class="chart-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Média</span>
+                                <span class="stat-value" id="temp-avg">--°C</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Máxima</span>
+                                <span class="stat-value" id="temp-max">--°C</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Mínima</span>
+                                <span class="stat-value" id="temp-min">--°C</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="tempHistoryChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Water Level Analysis -->
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h3>Histórico do Nível da Água</h3>
+                        <div class="chart-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Média</span>
+                                <span class="stat-value" id="level-avg">--%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Máxima</span>
+                                <span class="stat-value" id="level-max">--%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Mínima</span>
+                                <span class="stat-value" id="level-min">--%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="levelHistoryChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Equipment Status -->
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h3>Status dos Equipamentos</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="equipmentStatusChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="analysis.js" defer></script>
+</body>
+</html>
